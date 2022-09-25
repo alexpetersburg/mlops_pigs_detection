@@ -80,3 +80,24 @@ class TrainDatasetConfig(YamlModel):
 
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
+
+
+class PipelineConfig(YamlModel):
+    # data
+    dataset_path: str
+    dataset_name: str
+    project: str
+    task_name: str
+    dataset_id: str
+    local: int
+    version: str
+
+
+    @classmethod
+    def parse_raw(cls, filename: Union[str, Path] = "pipeline_config.yaml", *args, **kwargs):
+        with open(filename, 'r') as f:
+            data = f.read()
+        return super().parse_raw(data, *args, **kwargs)
+
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)

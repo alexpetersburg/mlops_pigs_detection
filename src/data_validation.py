@@ -1,7 +1,5 @@
 import os
-
 from PIL import Image
-from clearml import Task, TaskTypes, Dataset
 from config import ValidateDatasetConfig
 
 
