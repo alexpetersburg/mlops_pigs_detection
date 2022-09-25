@@ -1,0 +1,3 @@
+dataset_name: "pigs_detection_yolo"
+dataset_project: "mlops_pigs_detection"
+dataset_path: "yolo5/data/datasets/pigs_detection_dataset_yolo"
