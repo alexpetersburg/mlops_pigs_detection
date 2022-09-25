@@ -1,0 +1,5 @@
+dataset_name: "pigs_detection_yolo"
+project: "mlops_pigs_detection"
+dataset_path: "yolo5/data/datasets/pigs_detection_dataset_yolo"
+task_name: "validate_dataset"
+dataset_id: "1f95df3dce6e4b12b17b5eb9d86d1bf7"
