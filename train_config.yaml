@@ -1,0 +1,12 @@
+dataset_name: "pigs_detection_yolo_masked"
+project: "mlops_pigs_detection"
+dataset_path: "yolo5/data/datasets/pigs_detection_dataset_yolo"
+task_name: "test_train"
+dataset_id: "e65b720843c04c1398602f1788e25f95"
+
+# Yolo opt
+weights: "yolov5s.pt"
+data: "pigs_detection_yolo_masked_union_dataset.yaml"
+epochs: 1
+name: "pigs_detection_yolo_masked"
+batch_size: 32
