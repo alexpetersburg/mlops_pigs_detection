@@ -1,0 +1,8 @@
+dataset_name: "pigs_detection_yolo"
+project: "mlops_pigs_detection"
+dataset_path: "yolo5/data/datasets/pigs_detection_dataset_yolo"
+task_name: "preprocess_dataset"
+dataset_id: "1f95df3dce6e4b12b17b5eb9d86d1bf7"
+output_dataset_path: "processed_dataset"
+output_dataset_name: "mlops_pigs_detection_masked"
+mask_path: "static/mask.jpg"
