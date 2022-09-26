@@ -11,7 +11,9 @@ def main(config: TrainDatasetConfig):
     opt = parse_opt()
     opt = Namespace(**{**vars(opt), **config.dict()})
     task: Task = Task.init(project_name=config.project,
-                     task_name=config.task_name, task_type=TaskTypes.data_processing)
+                           task_name=config.task_name,
+                           task_type=TaskTypes.data_processing,
+                           output_uri=True)
 
     clearml_params = {
         "dataset_id": config.dataset_id
@@ -19,7 +21,7 @@ def main(config: TrainDatasetConfig):
     task.connect(opt)
     dataset_path = Dataset.get(**clearml_params).get_local_copy()
     config.dataset_path = Path(dataset_path)
-    train(opt=opt)  # TODO upload model weights
+    train(opt=opt)
 
 
 if __name__ == '__main__':
