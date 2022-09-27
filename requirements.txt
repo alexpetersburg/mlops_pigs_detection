@@ -44,3 +44,4 @@ clearml
 dvc
 pytest
 pydantic-yaml
+tritonclient
