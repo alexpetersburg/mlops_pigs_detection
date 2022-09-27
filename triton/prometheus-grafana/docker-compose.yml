@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  prometheus:
+    image: prom/prometheus:v2.34.0
+    container_name: triton-prometheus
+    volumes:
+      - ./prometheus.yml:/prometheus.yml
+    command:
+      - '--config.file=/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    restart: unless-stopped
+    networks:
+      - triton-network
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana:8.4.4-ubuntu
+    container_name: triton-grafana
+    volumes:
+      - './datasource.yml:/etc/grafana/provisioning/datasources/datasource.yaml'
+    restart: unless-stopped
+    ports:
+      - "9091:3000"
+    networks:
+      - triton-network
+
+networks:
+  triton-network:
+    driver: bridge
