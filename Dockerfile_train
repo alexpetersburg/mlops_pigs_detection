@@ -1,0 +1,29 @@
+FROM pytorch/pytorch:1.11.0-cuda11.3-cudnn8-runtime
+
+# Install some basic utilities
+RUN apt-get update && apt-get install -y \
+    curl \
+    ca-certificates \
+    sudo \
+    bzip2 \
+    libx11-6 \
+    libglib2.0-0 \
+    gcc \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update -y
+RUN apt-get install -y libsm6 libxrender1 libfontconfig1
+RUN apt-get install -y libxext6 libgl1-mesa-glx
+
+ARG APP_DIR=/app
+WORKDIR "$APP_DIR"
+
+COPY requirements.txt $APP_DIR/
+
+RUN pip install -U pip
+RUN pip install -U setuptools
+RUN pip install -r requirements.txt
+
+COPY . $APP_DIR/
+
+ENTRYPOINT ["python3", "train.py"]

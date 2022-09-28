@@ -1,0 +1,14 @@
+global:
+  scrape_interval:     15s # By default, scrape targets every 15 seconds.
+  evaluation_interval:     15s # By default, scrape targets every 15 seconds.
+  external_labels:
+    monitor: 'triton-serving'
+
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: 'prometheus'
+
+    scrape_interval: 5s
+
+    static_configs:
+      - targets: ['host.docker.internal:8002']

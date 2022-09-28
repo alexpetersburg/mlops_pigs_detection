@@ -1,0 +1,7 @@
+dataset_name: "pigs_detection_yolo_masked"
+project: "mlops_pigs_detection"
+dataset_path: "yolo5/data/datasets/pigs_detection_dataset_yolo"
+task_name: "train_pipeline"
+dataset_id: "e65b720843c04c1398602f1788e25f95"
+local: 1
+version: 0.0.1
